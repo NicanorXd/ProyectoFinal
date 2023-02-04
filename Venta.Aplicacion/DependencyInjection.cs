@@ -2,10 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using MongoDB.Driver;
+using ReciclajeDetalle.Aplicacion.Venta;
 using Release.MongoDB.Repository;
+using Venta.Aplicacion.Reciclaje;
+using Venta.Aplicacion.ReciclajeDetalle;
 using Venta.Infraestructura;
 using dominio = Venta.Dominio.Entidades;
-using Venta.Aplicacion.Venta;
 
 namespace Venta.Aplicacion
 {
@@ -21,19 +23,19 @@ namespace Venta.Aplicacion
             services.AddScoped<IDbContext>(x => new DbContext(dbUrl));
 
             //Entidades            
-            services.TryAddScoped<ICollectionContext<dominio.Venta>>(x => new CollectionContext<dominio.Venta>(x.GetService<IDbContext>()));
-           // services.TryAddScoped<ICollectionContext<dominio.DetallePedido>>(x => new CollectionContext<dominio.DetallePedido>(x.GetService<IDbContext>()));
+            services.TryAddScoped<ICollectionContext<dominio.Reciclaje>>(x => new CollectionContext<dominio.Reciclaje>(x.GetService<IDbContext>()));
+           services.TryAddScoped<ICollectionContext<dominio.ReciclajeDetalle>>(x => new CollectionContext<dominio.ReciclajeDetalle>(x.GetService<IDbContext>()));
 
             //Como Repo
-            services.TryAddScoped<IBaseRepository<dominio.Venta>>(x => new BaseRepository<dominio.Venta>(x.GetService<IDbContext>()));
-           // services.TryAddScoped<IBaseRepository<dominio.DetallePedido>>(x => new BaseRepository<dominio.DetallePedido>(x.GetService<IDbContext>()));
+            services.TryAddScoped<IBaseRepository<dominio.Reciclaje>>(x => new BaseRepository<dominio.Reciclaje>(x.GetService<IDbContext>()));
+            services.TryAddScoped<IBaseRepository<dominio.ReciclajeDetalle>>(x => new BaseRepository<dominio.ReciclajeDetalle>(x.GetService<IDbContext>()));
 
             #endregion
 
             #region Servicios
 
-            services.AddScoped<IVentaService, VentaService>();
-            //services.AddScoped<IDetallePedidoService, DetallePedidoService>();
+            services.AddScoped<IReciclajeService, ReciclajeService>();
+            services.AddScoped<IReciclajeDetalleService, ReciclajeDetalleService>();
             
 
             #endregion

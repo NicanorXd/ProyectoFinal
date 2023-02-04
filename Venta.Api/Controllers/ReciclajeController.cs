@@ -1,42 +1,42 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Venta.Aplicacion.Venta;
-using static Venta.Api.Routes.ApiRoutes;
+using Venta.Aplicacion.Reciclaje;
+using static Reciclaje.Api.Routes.ApiRoutes;
 using dominio = Venta.Dominio.Entidades;
 
-namespace Venta.Api.Controllers
+namespace Reciclaje.Api.Controllers
 {
     [ApiController]
-    public class VentaController : ControllerBase
+    public class ReciclajeController : ControllerBase
     {
 
-        private readonly IVentaService _service;
+        private readonly IReciclajeService _service;
 
-        public VentaController(IVentaService service)
+        public ReciclajeController(IReciclajeService service)
         {
             _service = service;
         }
 
         [HttpGet(RouteVenta.GetAll)]
-        public IEnumerable<dominio.Venta> ListarVentas()
+        public IEnumerable<dominio.Reciclaje> ListarVentas()
         {
 
-            var listaVenta = _service.ListarVentas();
+            var listaVenta = _service.ListarReciclaje();
             return listaVenta;
         }
 
         [HttpGet(RouteVenta.GetById)]
-        public dominio.Venta BuscarVenta(int id)
+        public dominio.Reciclaje BuscarVenta(int id)
         {
-            var objVenta = _service.Venta(id);
+            var objVenta = _service.Reciclaje(id);
 
             return objVenta;
         }
 
         [HttpPost(RouteVenta.Create)]
-        public ActionResult<dominio.Venta> CrearVenta([FromBody] dominio.Venta venta)
+        public ActionResult<dominio.Reciclaje> CrearVenta([FromBody] dominio.Reciclaje venta)
         {
-            _service.RegistrarVenta(venta);
+            _service.RegistrarReciclaje(venta);
 
             return Ok();
         }
@@ -68,7 +68,7 @@ namespace Venta.Api.Controllers
         //}
 
         [HttpDelete(RouteVenta.Delete)]
-        public ActionResult<dominio.Venta> EliminarVenta(int id)
+        public ActionResult<dominio.Reciclaje> EliminarVenta(int id)
         {
             _service.Eliminar(id);
 

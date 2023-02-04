@@ -1,4 +1,4 @@
-﻿namespace Venta.Api.Routes
+﻿namespace Reciclaje.Api.Routes
 {
     public static class ApiRoutes
     {
@@ -9,13 +9,26 @@
         public static class RouteVenta
         {
             // Read
-            public const string GetAll = Base + "/venta/all";
-            public const string GetById = Base + "/venta/{id}";
+            public const string GetAll = Base + "/reciclaje/all";
+            public const string GetById = Base + "/reciclaje/{id}";
 
             // Write
-            public const string Create = Base + "/venta/create";
-            public const string Update = Base + "/venta/update";
-            public const string Delete = Base + "/venta/delete";
+            public const string Create = Base + "/reciclaje/create";
+            public const string Update = Base + "/reciclaje/update";
+            public const string Delete = Base + "/reciclaje/delete";
+
+        }
+
+        public static class RouteDetalleVenta
+        {
+            // Read
+            public const string GetAll = Base + "/detalleReciclaje/all";
+            public const string GetById = Base + "/detalleReciclaje/{id}";
+
+            // Write
+            public const string Create = Base + "/detalleReciclaje/create";
+            public const string Update = Base + "/detalleReciclaje/update";
+            public const string Delete = Base + "/detalleReciclaje/delete";
 
         }
 
