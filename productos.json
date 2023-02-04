@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "63c8a2ac1936975259cf00a5"
+  },
+  "Categoria": "granos",
+  "Descripcion": "hecho a base de trigo",
+  "IdProducto": 1,
+  "Imagenes": "img01",
+  "Nombre": "arroz",
+  "Precio": 1,
+  "Stock": 1
+},{
+  "_id": {
+    "$oid": "63c96f36d22ca5c3ad729c65"
+  },
+  "IdProducto": 2,
+  "Nombre": "arroz",
+  "Descripcion": "asdasd",
+  "Precio": 30,
+  "Categoria": "asdasda",
+  "Imagenes": "sdasd",
+  "Stock": 20
+}]
