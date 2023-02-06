@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Material.Api
+namespace TDB.Gateway.Api
 {
     public class Program
     {

@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Material.Aplicacion\Material.Aplicacion.csproj" />
-    <ProjectReference Include="..\Material.Dominio\Material.Dominio.csproj" />
-    <ProjectReference Include="..\Material.Infraestructura\Material.Infraestructura.csproj" />
+    <ProjectReference Include="..\TDB.Gateway.Aplicacion\TDB.Gateway.Aplicacion.csproj" />
   </ItemGroup>
 
   <ItemGroup>
