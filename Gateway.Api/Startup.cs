@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using TDB.Gateway.Aplicacion;
+using Gateway.Aplicacion;
 
-namespace TDB.Gateway.Api
+namespace Gateway.Api
 {
     public class Startup
     {

@@ -13,7 +13,7 @@
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace TDB.Gateway.Aplicacion.ClientesClient
+namespace Gateway.Aplicacion.MaterialesClient
 {
     using System = global::System;
 
@@ -22,50 +22,52 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
     {
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Cliente>> ApiV1ClienteAllAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Material>> ApiV1MaterialAllAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Cliente>> ApiV1ClienteAllAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Material>> ApiV1MaterialAllAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Cliente> ApiV1ClienteAsync(int id);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Cliente> ApiV1ClienteAsync(int id, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Cliente> ApiV1ClienteCreateAsync(Cliente body);
+        System.Threading.Tasks.Task<Material> ApiV1MaterialAsync(int id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Cliente> ApiV1ClienteCreateAsync(Cliente body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<Material> ApiV1MaterialAsync(int id, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Cliente> ApiV1ClienteDeleteAsync(int? id);
+        System.Threading.Tasks.Task<Material> ApiV1MaterialCreateAsync(Material body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Cliente> ApiV1ClienteDeleteAsync(int? id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<Material> ApiV1MaterialCreateAsync(Material body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Material> ApiV1MaterialDeleteAsync(int? id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Material> ApiV1MaterialDeleteAsync(int? id, System.Threading.CancellationToken cancellationToken);
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.18.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.1.0))")]
     public partial class Client : IClient
     {
+        private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public Client(System.Net.Http.HttpClient httpClient)
+        public Client(string baseUrl, System.Net.Http.HttpClient httpClient)
         {
+            BaseUrl = baseUrl;
             _httpClient = httpClient;
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
@@ -75,6 +77,12 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
             var settings = new Newtonsoft.Json.JsonSerializerSettings();
             UpdateJsonSerializerSettings(settings);
             return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set { _baseUrl = value; }
         }
 
         protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
@@ -87,18 +95,18 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Cliente>> ApiV1ClienteAllAsync()
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Material>> ApiV1MaterialAllAsync()
         {
-            return ApiV1ClienteAllAsync(System.Threading.CancellationToken.None);
+            return ApiV1MaterialAllAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Cliente>> ApiV1ClienteAllAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Material>> ApiV1MaterialAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/all");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/material/all");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -132,7 +140,7 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<Cliente>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<Material>>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -161,21 +169,21 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Cliente> ApiV1ClienteAsync(int id)
+        public virtual System.Threading.Tasks.Task<Material> ApiV1MaterialAsync(int id)
         {
-            return ApiV1ClienteAsync(id, System.Threading.CancellationToken.None);
+            return ApiV1MaterialAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Cliente> ApiV1ClienteAsync(int id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Material> ApiV1MaterialAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/{id}");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/material/{id}");
             urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
@@ -210,7 +218,7 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Cliente>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<Material>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -239,18 +247,18 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Cliente> ApiV1ClienteCreateAsync(Cliente body)
+        public virtual System.Threading.Tasks.Task<Material> ApiV1MaterialCreateAsync(Material body)
         {
-            return ApiV1ClienteCreateAsync(body, System.Threading.CancellationToken.None);
+            return ApiV1MaterialCreateAsync(body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Cliente> ApiV1ClienteCreateAsync(Cliente body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Material> ApiV1MaterialCreateAsync(Material body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/create");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/material/create");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -288,7 +296,7 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Cliente>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<Material>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -317,18 +325,18 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Cliente> ApiV1ClienteDeleteAsync(int? id)
+        public virtual System.Threading.Tasks.Task<Material> ApiV1MaterialDeleteAsync(int? id)
         {
-            return ApiV1ClienteDeleteAsync(id, System.Threading.CancellationToken.None);
+            return ApiV1MaterialDeleteAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Cliente> ApiV1ClienteDeleteAsync(int? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Material> ApiV1MaterialDeleteAsync(int? id, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/v1/cliente/delete?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/v1/material/delete?");
             if (id != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -367,7 +375,7 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Cliente>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<Material>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -498,7 +506,7 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.1.0))")]
-    public partial class Cliente
+    public partial class Material
     {
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public ObjectId Id { get; set; }
@@ -515,26 +523,17 @@ namespace TDB.Gateway.Aplicacion.ClientesClient
         [Newtonsoft.Json.JsonProperty("esEliminado", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool EsEliminado { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idCliente", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int IdCliente { get; set; }
+        [Newtonsoft.Json.JsonProperty("idMaterial", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int IdMaterial { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("tipoDocumento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TipoDocumento { get; set; }
+        [Newtonsoft.Json.JsonProperty("unidadMedida", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int UnidadMedida { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("numeroDocumento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string NumeroDocumento { get; set; }
+        [Newtonsoft.Json.JsonProperty("tipoMaterial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TipoMaterial { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("nombres", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Nombres { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("apellidoPaterno", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ApellidoPaterno { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("apellidoMaterno", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ApellidoMaterno { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("celular", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Celular { get; set; }
+        [Newtonsoft.Json.JsonProperty("cantidadMaterial", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int CantidadMaterial { get; set; }
 
     }
 

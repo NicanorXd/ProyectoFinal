@@ -1,4 +1,4 @@
-﻿namespace TDB.Gateway.Api.Routes
+﻿namespace Gateway.Api.Routes
 {
     public static class ApiRoutes
     {
@@ -6,16 +6,16 @@
         public const string Version = "v1";
         public const string Base = Root + "/" + Version;
 
-        public static class RouteProducto
+        public static class RouteMaterial
         {
             // Read
-            public const string GetAll = Base + "/producto/all";
-            public const string GetById = Base + "/producto/{id}";
+            public const string GetAll = Base + "/material/all";
+            public const string GetById = Base + "/material/{id}";
 
             // Write
-            public const string Create = Base + "/producto/create";
-            public const string Update = Base + "/producto/update";
-            public const string Delete = Base + "/producto/delete";
+            public const string Create = Base + "/material/create";
+            public const string Update = Base + "/material/update";
+            public const string Delete = Base + "/material/delete";
 
             public const string RegistrarPedido = Base + "/pedido/create";
 

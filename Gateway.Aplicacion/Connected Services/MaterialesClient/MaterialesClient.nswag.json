@@ -1,14 +1,14 @@
 ﻿{
   "openapi": "3.0.1",
   "info": {
-    "title": "TDB.Ms.Cliente.Api",
+    "title": "Material.Api",
     "version": "1.0"
   },
   "paths": {
-    "/api/v1/cliente/all": {
+    "/api/v1/material/all": {
       "get": {
         "tags": [
-          "Cliente"
+          "Material"
         ],
         "operationId": "all",
         "responses": {
@@ -19,7 +19,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Cliente"
+                    "$ref": "#/components/schemas/Material"
                   }
                 }
               },
@@ -27,7 +27,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Cliente"
+                    "$ref": "#/components/schemas/Material"
                   }
                 }
               },
@@ -35,7 +35,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Cliente"
+                    "$ref": "#/components/schemas/Material"
                   }
                 }
               }
@@ -44,12 +44,12 @@
         }
       }
     },
-    "/api/v1/cliente/{id}": {
+    "/api/v1/material/{id}": {
       "get": {
         "tags": [
-          "Cliente"
+          "Material"
         ],
-        "operationId": "cliente",
+        "operationId": "material",
         "parameters": [
           {
             "name": "id",
@@ -67,17 +67,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               }
             }
@@ -85,27 +85,27 @@
         }
       }
     },
-    "/api/v1/cliente/create": {
+    "/api/v1/material/create": {
       "post": {
         "tags": [
-          "Cliente"
+          "Material"
         ],
         "operationId": "create",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/Material"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/Material"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/Material"
               }
             }
           }
@@ -116,17 +116,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               }
             }
@@ -134,10 +134,10 @@
         }
       }
     },
-    "/api/v1/cliente/delete": {
+    "/api/v1/material/delete": {
       "delete": {
         "tags": [
-          "Cliente"
+          "Material"
         ],
         "operationId": "delete",
         "parameters": [
@@ -156,17 +156,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cliente"
+                  "$ref": "#/components/schemas/Material"
                 }
               }
             }
@@ -177,7 +177,7 @@
   },
   "components": {
     "schemas": {
-      "Cliente": {
+      "Material": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -199,33 +199,21 @@
           "esEliminado": {
             "type": "boolean"
           },
-          "idCliente": {
+          "idMaterial": {
             "type": "integer",
             "format": "int32"
           },
-          "tipoDocumento": {
+          "unidadMedida": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipoMaterial": {
             "type": "string",
             "nullable": true
           },
-          "numeroDocumento": {
-            "type": "string",
-            "nullable": true
-          },
-          "nombres": {
-            "type": "string",
-            "nullable": true
-          },
-          "apellidoPaterno": {
-            "type": "string",
-            "nullable": true
-          },
-          "apellidoMaterno": {
-            "type": "string",
-            "nullable": true
-          },
-          "celular": {
-            "type": "string",
-            "nullable": true
+          "cantidadMaterial": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
